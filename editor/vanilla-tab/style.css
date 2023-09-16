@@ -1,0 +1,353 @@
+.hs-responsive-embed-youtube {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    padding-top: 25px;
+}
+.hs-responsive-embed-youtube iframe {
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+div.tab {
+    --tab-stripe-height: 58px;
+    --tab-content-height: calc(100% - var(--tab-stripe-height));
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+    background: #fff;
+    margin: 10px auto 5px; /* TMP */
+    border: 2.5px solid #bbb;
+    border-radius: 9px;
+    overflow: hidden;
+    content-visibility: auto;
+}
+
+@media (hover: none) {
+    div.tab {
+        --tab-stripe-height: 50px;
+    }
+}
+
+div.tab:fullscreen {
+    border: none;
+    border-radius: 0px;
+}
+
+/* tab-stripe START */
+div.tab > nav.tab-stripe {
+    position: relative;
+    display: flex;
+    /* align-items: center; Not needed */
+    /* background-color: #f6f6f6; WILL CAUSE CHROME TO DOUBLE SCROLL */
+    background-image: linear-gradient(#f6f6f6 calc(100% - 2px), #e6e6e6 2px);
+    width: 100%;
+    height: var(--tab-stripe-height);
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin; /* 8px */
+    cursor: grab;
+}
+div.tab > nav.tab-stripe.active {
+    cursor: grabbing;
+}
+
+div.tab > nav.tab-stripe::-webkit-scrollbar {
+    height: 8px;
+}
+div.tab > nav.tab-stripe::-webkit-scrollbar-track {
+    background-color: #f6f6f6;
+}
+div.tab > nav.tab-stripe::-webkit-scrollbar-thumb {
+    border-width: 0.5px 0 0 0;
+    border-radius: 0;
+}
+@media (hover: none) {
+    div.tab > nav.tab-stripe::-webkit-scrollbar,
+    div.tab > div.tab-content > div::-webkit-scrollbar {
+        display: none;
+    }
+    div.tab > nav.tab-stripe,
+    div.tab > div.tab-content > div {
+        scrollbar-width: none;
+    }
+}
+/* tab-stripe END */
+
+/* tab-stripe > a START */
+div.tab > nav.tab-stripe > a {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    text-decoration: none;
+    color: #000;
+    letter-spacing: -2px; /* TMP */
+    height: 100%;
+    padding: 0 20px;
+    border-right: 2px solid #cacaca;
+    box-shadow: inset 0 -2px 0 0 #e6e6e6;
+    scroll-snap-align: start;
+    /* scroll-snap-stop: always; */
+    user-select: none;
+}
+div.tab > nav.tab-stripe > a:last-child {
+    border-right: none;
+    scroll-snap-align: end;
+}
+
+div.tab > nav.tab-stripe > a:hover {
+    background: #fcfcfc;
+}
+@media (hover: none) {
+    div.tab > nav.tab-stripe > a:hover {
+        background: initial;
+    }
+}
+
+div.tab > nav.tab-stripe.active > a:hover {
+    background: inherit;
+    cursor: default;
+}
+
+div.tab > nav.tab-stripe > a.active {
+    background: #fff;
+    box-shadow: inset 0 0 0 0 #e6e6e6;
+    cursor: default;
+}
+
+/* tab-stripe > a END */
+
+/* tab-scroll-button START */
+div.tab > button.tab-scroll-button {
+    /* --button-size: calc(var(--tab-stripe-height) - 8px); */
+    position: absolute;
+    top: 0;
+    width: 50px; /* make static */
+    height: 50px; /* make static */
+    background: #fff center/30px no-repeat;
+    border: solid #cecece;
+    /* cursor: pointer; */
+    transition: transform 0.2s;
+}
+
+div.tab > button.tab-scroll-button.left {
+    left: 0;
+    border-width: 0 2px 2px 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='24' height='24' fill='none'/%3E%3Cg fill='none' stroke='%23626262' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='m19 12h-14'/%3E%3Cpath d='m12 5-7 7 7 7'/%3E%3C/g%3E%3C/svg%3E");
+}
+div.tab > button.tab-scroll-button.right {
+    right: 0;
+    border-width: 0 0 2px 2px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='24' height='24' fill='none'/%3E%3Cg fill='none' stroke='%23626262' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='m5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+div.tab > button.tab-scroll-button.left.hidden {
+    transform: translateX(-50px);
+}
+div.tab > button.tab-scroll-button.right.hidden {
+    transform: translateX(50px);
+}
+/* tab-scroll-button END */
+
+/* tab-full-screen-button START */
+div.tab > button.tab-full-screen-button {
+    position: absolute;
+    inset: auto auto 5px 5px;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    background: #fff center/44px no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cpath fill='%23666' d='M10 5H5v5h2V7h3V5zM19 5h-5v2h3v3h2V5zM7 14H5v5h5v-2H7v-3zM19 14h-2v3h-3v2h5v-5z'/%3E%3C/svg%3E");
+    border: 2px solid #e1e1e1;
+    cursor: pointer;
+}
+
+div.tab:fullscreen > button.tab-full-screen-button {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cpath fill='%23666' d='M10 5H8v3H5v2h5V5zM16 5h-2v5h5V8h-3V5zM10 14H5v2h3v3h2v-5zM19 14h-5v5h2v-3h3v-2z'/%3E%3C/svg%3E");
+}
+/* tab.css END */
+
+/* tab-content.css START */
+div.tab > div.tab-content {
+    --tab-content-font-size: 18px;
+    font-family: "Google Sans", "Noto Sans Devanagari";
+    font-size: var(--tab-content-font-size);
+    /* Don't know why ↑ this is focusing when tabbing, causing layout shift */
+    height: var(--tab-content-height);
+    line-height: 1.4;
+    z-index: 1;
+}
+@media (max-width: 321px) {
+    div.tab > div.tab-content {
+        --tab-content-font-size: 17px;
+    }
+}
+@media (min-width: 450px) {
+    div.tab > div.tab-content {
+        --tab-content-font-size: 19px;
+    }
+}
+@media (min-width: 800px) {
+    div.tab > div.tab-content {
+        --tab-content-font-size: 20px;
+    }
+}
+
+.youtube-video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+
+div.tab > div.tab-content > div {
+    display: none;
+    padding: 2% 3%;
+    height: 100%;
+    overflow: auto;
+    scrollbar-width: thin; /* 8px */
+}
+
+@media (min-width: 450px) {
+    div.tab > div.tab-content > div {
+        padding: 2% 4%; /* OR only 3/4% */
+    }
+}
+
+div.tab > div.tab-content > div.active {
+    display: block;
+}
+
+div.tab > div.tab-content > div::-webkit-scrollbar {
+    width: 8px;
+    outline: 0.5px solid #ededed;
+    /* display: none; */
+}
+div.tab > div.tab-content > div::-webkit-scrollbar-track {
+    background-color: #f6f6f6;
+}
+div.tab > div.tab-content > div::-webkit-scrollbar-thumb {
+    border-width: 0.5px 0 0 0.5px;
+    border-radius: 0;
+}
+
+/* Inner Tab Content > div Start */
+
+div.tab > div.tab-content div > div.question {
+    font-weight: 500; /* Not working beacause of Kohinoor BUG? */
+    margin-bottom: 15px;
+}
+
+div.tab > div.tab-content div > div.question + div.answer {
+    padding: 15px 0 40px;
+    border-top: 2px solid #e1e1e1;
+}
+
+div.tab > div.tab-content div > div > * + * {
+    display: inline;
+    margin: 10px 0;
+}
+
+/* Inner Tab Content > div > * Start */
+
+div.tab > div.tab-content div > div > p > span {
+    font-weight: 500;
+    background-color: #ededed;
+    border-radius: 3px;
+    padding: 0 3px;
+}
+
+/* Should be Globle in base.css */
+
+div.tab picture {
+    display: block;
+    margin: 10px 0;
+}
+
+div.tab picture > img {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+/* ::before zoom cursor icon at Bottom Left */
+
+div.tab ol,
+div.tab ul {
+    padding-left: 23px;
+}
+
+/* tab-content.css END */
+
+/* base.css START */
+:root {
+    --font: "Google Sans", "Noto Sans Devanagari";
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    /* transition: all 0.2s; */
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+    overflow-anchor: auto;
+    /* scrollbar-width: thin; Firefox */
+    /* outline: 1px solid red; */
+}
+
+::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    background-clip: padding-box;
+    border: solid transparent;
+    border-radius: 8px;
+    min-height: 15px;
+    min-width: 15px;
+}
+
+::selection {
+    background: yellow;
+    color: #1a73e9;
+    opacity: 1;
+}
+
+body {
+    font-family: var(--font);
+    font-size: 20px;
+    font-variant-numeric: tabular-nums;
+    /* max-width: 1200px; */
+    min-width: 291px;
+    /* padding: 50px 2%; */
+}
+
+a {
+    color: #0050ff;
+}
+
+:target {
+    scroll-margin-top: 100px;
+}
+
+h4 {
+    font-weight: 400;
+    line-height: 1.55;
+    margin-bottom: 30px;
+}
+code {
+    font-family: JetBrains Mono;
+    background-color: #dadada;
+    padding: 0 6px;
+    border-radius: 4px;
+}
