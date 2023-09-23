@@ -21,14 +21,15 @@ body {
 }
 
 .wrapper {
-    width: var(--width);
-    height: var(--height);
-    position: relative;
+    /* width: var(--width); */
+    /* height: var(--height); */
+    position: absolute;
     border-radius: var(--border-radius);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 6rem;
+    inset: auto 5px 5px auto;
 }
 .wrapper .fab {
     background: var(--background);
@@ -76,18 +77,18 @@ body {
     align-items: center;
     transition: opacity 0.2s ease-in, top 0.2s ease-in, width 0.1s ease-in;
     /*&::after {
-    content: "";
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    border-radius: 3px;
-    position: absolute;
-    left: 50%;
-    margin-left: -10px;
-    bottom: -8px;
-    transform: rotate(45deg);
-    z-index: 0;
-  }*/
+content: "";
+width: 20px;
+height: 20px;
+background: #fff;
+border-radius: 3px;
+position: absolute;
+left: 50%;
+margin-left: -10px;
+bottom: -8px;
+transform: rotate(45deg);
+z-index: 0;
+}*/
 }
 .wrapper .fac a {
     color: var(--icon-color);

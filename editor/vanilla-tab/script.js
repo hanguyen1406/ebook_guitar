@@ -333,21 +333,6 @@ const exportTab = () => {
     }
 };
 
-document.querySelector("#pdf").addEventListener("click", () => {
-    var printPreview = window.open("about:blank", "print_preview");
-    var printDocument = printPreview.document;
-    printDocument.open();
-    printDocument.write(
-        "<!DOCTYPE html><html><head>" +
-            // document.getElementsByTagName("style")[0].outerHTML +
-            "</head><body>" +
-            document.querySelector("#Tab1-Q1").innerHTML +
-            "</body></html>"
-    );
-    printPreview.print();
-    printPreview.close();
-});
-
 const importTab = () => {
     // Create a hidden input element of type 'file'
     const fileInput = document.createElement("input");
