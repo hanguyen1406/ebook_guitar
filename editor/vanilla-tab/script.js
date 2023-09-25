@@ -252,6 +252,14 @@ function addTab(index) {
 }
 
 const saveVanillaTab = () => {
+    // Get all <style> elements in the <head>
+    const styleElements = document.querySelectorAll("head style");
+
+    // Remove each <style> element
+    styleElements.forEach((styleElement) => {
+        styleElement.parentNode.removeChild(styleElement);
+    });
+
     var data = document.documentElement.outerHTML;
     // console.log(data);
     // Create a POST request to the server
@@ -281,7 +289,30 @@ const publishForUser = () => {
     doc.querySelectorAll("#text-input").forEach((value) => {
         value.removeAttribute("contenteditable");
     });
-    var data = doc.querySelector("html").innerHTML;
+
+    //prepare for floating icon
+    var wrapper = document.createElement("div");
+    doc.querySelector(".tab").appendChild(wrapper);
+    wrapper.outerHTML = `<div class="wrapper">
+        <link href="./floating.css" rel="stylesheet" />
+        <input type="checkbox" />
+        <div class="fab"></div>
+        <div class="fac">
+            <a id="pdf" href="#"><i class="fas fa-file-pdf"></i></a>
+        </div>
+    </div>`;
+
+    // Create a new script element
+    const scriptElement = document.createElement("script");
+
+    // Set the src attribute to "./floating.js"
+    scriptElement.src = "./floating.js";
+
+    // Append the script element to the <body>
+    doc.body.appendChild(scriptElement);
+
+    // var data = doc.querySelector("html").innerHTML;
+    var data = doc.documentElement.outerHTML;
 
     fetch("publishUser.php", {
         method: "POST",

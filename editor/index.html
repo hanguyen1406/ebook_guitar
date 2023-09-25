@@ -1,45 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en"><head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
 
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         <!-- import style for vanilla tab -->
-        <link href="./vanilla-tab/style.css" rel="stylesheet" />
-        <link href="./text-editor/style.css" rel="stylesheet" />
-        <style>
-            /* Styling for the context menu */
-            .context-menu {
-                display: none;
-                position: absolute;
-                background-color: #fff;
-                border: 1px solid #ccc;
-                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-                z-index: 1;
-            }
-
-            .context-menu-item {
-                padding: 8px 12px;
-                cursor: pointer;
-            }
-
-            .context-menu-item:hover {
-                background-color: #f0f0f0;
-            }
-        </style>
+        <link href="./vanilla-tab/style.css" rel="stylesheet">
+        <link href="./text-editor/style.css" rel="stylesheet">
     </head>
     <body>
         <div class="container">
             <div class="options">
-                <button id="bold" class="option-button format">
+                <button id="bold" class="option-button format active">
                     <i class="fa-solid fa-bold"></i>
                 </button>
-                <button id="italic" class="option-button format">
+                <button id="italic" class="option-button format active">
                     <i class="fas fa-italic"></i>
                 </button>
                 <button id="underline" class="option-button format">
@@ -75,7 +50,7 @@
                     <i class="fa fa-unlink"></i>
                 </button>
 
-                <button id="justifyLeft" class="option-button align">
+                <button id="justifyLeft" class="option-button align active">
                     <i class="fa-solid fa-align-left"></i>
                 </button>
                 <button id="justifyCenter" class="option-button align">
@@ -101,23 +76,31 @@
                     <option value="H5">H5</option>
                     <option value="H6">H6</option>
                 </select>
-                <select id="fontName" class="adv-option-button"></select>
-                <select id="fontSize" class="adv-option-button"></select>
+                <select id="fontName" class="adv-option-button">
+                    <option value="Arial">Arial</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Garamond">Garamond</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Cursive">Cursive</option>
+                </select>
+                <select id="fontSize" class="adv-option-button">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
 
                 <div class="input-wrapper">
-                    <input
-                        type="color"
-                        id="foreColor"
-                        class="adv-option-button"
-                    />
+                    <input type="color" id="foreColor" class="adv-option-button">
                     <label for="foreColor">Font Color</label>
                 </div>
                 <div class="input-wrapper">
-                    <input
-                        type="color"
-                        id="backColor"
-                        class="adv-option-button"
-                    />
+                    <input type="color" id="backColor" class="adv-option-button">
                     <label for="backColor">Highlight Color</label>
                 </div>
             </div>
@@ -126,70 +109,112 @@
             <nav class="tab-stripe">
                 <a class="active" href="#Tab1-Q1">1</a>
                 <!-- <a style="font-weight: bold" href="#addTabBtn">+</a> -->
+                <a href="#Tab1-Q2" class="">2</a><a href="#Tab1-Q3" class="">3</a><a href="#Tab1-Q4" class="">4</a><a href="#Tab1-Q5" class="">5</a><a href="#Tab1-Q6" class="">6</a><a href="#Tab1-Q7" class="">7</a><a href="#Tab1-Q8" class="">8</a><a href="#Tab1-Q9" class="">9</a><a href="#Tab1-Q10" class="">10</a><a href="#Tab1-Q11">11</a><a href="#Tab1-Q12" class="">12</a><a href="#Tab1-Q13" class="">13</a><a href="#Tab1-Q14" class="">14</a>
             </nav>
             <button class="tab-scroll-button left hidden"></button>
             <button class="tab-scroll-button right"></button>
             <button class="tab-full-screen-button"></button>
             <div class="tab-content">
                 <div class="active" id="#Tab1-Q1">
-                    <div id="text-input" contenteditable="true">hello</div>
+                    <div id="text-input" contenteditable="true">
+                        <div style="text-align: left">
+                            <font size="7" face="cursive"><b style=""><i style=""><font style="background-color: rgb(197, 255, 71);" color="#fb6a6a">hello</font></i></b></font></div>
+                        <div style="text-align: left">
+                            <b style=""><i style=""><font face="Verdana" style="
+                                            background-color: rgb(197, 255, 71);
+                                        " size="3" color="#fb6a6a"><img src="https://i.imgur.com/aFlzSlb.jpeg" style="max-width: 100%;"><br></font></i></b>
+                        </div>
+                        <div>
+                            <div style="text-align: left">
+                                <b style=""><i style=""><font face="Verdana" style="
+                                                background-color: rgb(
+                                                    197,
+                                                    255,
+                                                    71
+                                                );
+                                            " size="3" color="#fb6a6a"><br></font></i></b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="" id="#Tab1-Q2">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q3">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q4">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q5">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q6">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q7">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q8">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q9">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q10">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q11">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q12">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q13">
+                    <div id="text-input" contenteditable="true"></div>
+                </div>
+                <div class="" id="#Tab1-Q14">
+                    <div id="text-input" contenteditable="true"></div>
                 </div>
             </div>
         </div>
         <div id="excute" style="text-align: center">
-            <button
-                style="
+            <button style="
                     width: fit-content;
                     display: inline;
                     font-size: large;
                     height: fit-content;
-                "
-                onclick="saveVanillaTab()"
-                id="save"
-            >
+                " onclick="saveVanillaTab()" id="save">
                 Save
             </button>
 
-            <button
-                style="
+            <button style="
                     width: fit-content;
                     display: inline;
                     font-size: large;
                     height: fit-content;
-                "
-                onclick="publishForUser()"
-                id="publish"
-            >
+                " onclick="publishForUser()" id="publish">
                 Publish
             </button>
-            <button
-                style="
+            <button style="
                     width: fit-content;
                     display: inline;
                     font-size: large;
                     height: fit-content;
-                "
-                onclick="exportTab()"
-                id="export"
-            >
+                " onclick="exportTab()" id="export">
                 Export
             </button>
-            <button
-                style="
+            <button style="
                     width: fit-content;
                     display: inline;
                     font-size: large;
                     height: fit-content;
-                "
-                id="import"
-                onclick="importTab()"
-            >
+                " id="import" onclick="importTab()">
                 Import
             </button>
-            
         </div>
 
-        <div class="context-menu" id="contextMenu" style="font-weight: bold">
+        <div class="context-menu" id="contextMenu" style="font-weight: bold; display: none; left: 107px; top: 158px">
             <div class="context-menu-item" id="deleteItem">
                 Delete <i class="fas fa-trash-alt"></i>
             </div>
@@ -203,15 +228,26 @@
                 Move left <i class="fas fa-long-arrow-alt-left"></i>
             </div>
         </div>
-    </body>
 
-    <!-- script for rich text edior -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <!-- script for text editor -->
-    <script src="./text-editor/script.js"></script>
-    <!-- script for vanilla tab -->
-    <script src="./vanilla-tab/script.js"></script>
-</html>
+        <!-- script for text editor -->
+        <script src="./text-editor/script.js"></script>
+        <!-- script for vanilla tab -->
+        <script src="./vanilla-tab/script.js"></script>
+
+        <div id="5386CA82-7210-0F03-F0B8-355E1D75DEB4"></div>
+
+        <div id="7AED1372-33EB-4BE0-41A5-C4BAC04DA6C6"></div>
+
+        <div id="B474ABDC-1C4A-A599-A5FA-416E31C6C6EB"></div>
+
+        <div id="39A9C575-D3CD-015B-5FBF-EA06C0341D48"></div>
+    
+    
+
+<div id="3F33D0BE-7BC7-8C36-64E2-CE811CDD5C33"></div>
+<div id="DE4C0925-BF73-BE95-B09F-587F844B389D"></div>
+<div id="EB29B2C5-B3A6-BEAF-6993-462EFC18DFF9"></div></body><!-- script for rich text edior --></html>

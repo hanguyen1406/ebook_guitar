@@ -1,442 +1,230 @@
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+<html lang="en"><head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
 
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    />
-    <!-- import style for vanilla tab -->
-    <link href="./vanilla-tab/style.css" rel="stylesheet" />
-
-    <link href="./text-editor/style.css" rel="stylesheet" />
-    <style>
-        /* Styling for the context menu */
-        .context-menu {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .context-menu-item {
-            padding: 8px 12px;
-            cursor: pointer;
-        }
-
-        .context-menu-item:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+        <!-- import style for vanilla tab -->
+        <link href="./vanilla-tab/style.css" rel="stylesheet">
+        <link href="./text-editor/style.css" rel="stylesheet">
     <style data-jss="" data-meta="MuiDialog">
-        @media print {
-            .MuiDialog-root {
-                position: absolute !important;
-            }
-        }
-        .MuiDialog-scrollPaper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .MuiDialog-scrollBody {
-            overflow-x: hidden;
-            overflow-y: auto;
-            text-align: center;
-        }
-        .MuiDialog-scrollBody:after {
-            width: 0;
-            height: 100%;
-            content: "";
-            display: inline-block;
-            vertical-align: middle;
-        }
-        .MuiDialog-container {
-            height: 100%;
-            outline: 0;
-        }
-        @media print {
-            .MuiDialog-container {
-                height: auto;
-            }
-        }
-        .MuiDialog-paper {
-            margin: 32px;
-            position: relative;
-            overflow-y: auto;
-        }
-        @media print {
-            .MuiDialog-paper {
-                box-shadow: none;
-                overflow-y: visible;
-            }
-        }
-        .MuiDialog-paperScrollPaper {
-            display: flex;
-            max-height: calc(100% - 64px);
-            flex-direction: column;
-        }
-        .MuiDialog-paperScrollBody {
-            display: inline-block;
-            text-align: left;
-            vertical-align: middle;
-        }
-        .MuiDialog-paperWidthFalse {
-            max-width: calc(100% - 64px);
-        }
-        .MuiDialog-paperWidthXs {
-            max-width: 444px;
-        }
-        @media (max-width: 507.95px) {
-            .MuiDialog-paperWidthXs.MuiDialog-paperScrollBody {
-                max-width: calc(100% - 64px);
-            }
-        }
-        .MuiDialog-paperWidthSm {
-            max-width: 600px;
-        }
-        @media (max-width: 663.95px) {
-            .MuiDialog-paperWidthSm.MuiDialog-paperScrollBody {
-                max-width: calc(100% - 64px);
-            }
-        }
-        .MuiDialog-paperWidthMd {
-            max-width: 960px;
-        }
-        @media (max-width: 1023.95px) {
-            .MuiDialog-paperWidthMd.MuiDialog-paperScrollBody {
-                max-width: calc(100% - 64px);
-            }
-        }
-        .MuiDialog-paperWidthLg {
-            max-width: 1280px;
-        }
-        @media (max-width: 1343.95px) {
-            .MuiDialog-paperWidthLg.MuiDialog-paperScrollBody {
-                max-width: calc(100% - 64px);
-            }
-        }
-        .MuiDialog-paperWidthXl {
-            max-width: 1920px;
-        }
-        @media (max-width: 1983.95px) {
-            .MuiDialog-paperWidthXl.MuiDialog-paperScrollBody {
-                max-width: calc(100% - 64px);
-            }
-        }
-        .MuiDialog-paperFullWidth {
-            width: calc(100% - 64px);
-        }
-        .MuiDialog-paperFullScreen {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            max-width: 100%;
-            max-height: none;
-            border-radius: 0;
-        }
-        .MuiDialog-paperFullScreen.MuiDialog-paperScrollBody {
-            margin: 0;
-            max-width: 100%;
-        }
-    </style>
-    <style data-jss="" data-meta="MuiDialog">
-        @media print {
-            .MuiDialog-root {
-                position: absolute !important;
-            }
-        }
-        .MuiDialog-scrollPaper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .MuiDialog-scrollBody {
-            overflow-x: hidden;
-            overflow-y: auto;
-            text-align: center;
-        }
-        .MuiDialog-scrollBody:after {
-            width: 0;
-            height: 100%;
-            content: "";
-            display: inline-block;
-            vertical-align: middle;
-        }
-        .MuiDialog-container {
-            height: 100%;
-            outline: 0;
-        }
-        @media print {
-            .MuiDialog-container {
-                height: auto;
-            }
-        }
-        .MuiDialog-paper {
-            margin: 32px;
-            position: relative;
-            overflow-y: auto;
-        }
-        @media print {
-            .MuiDialog-paper {
-                box-shadow: none;
-                overflow-y: visible;
-            }
-        }
-        .MuiDialog-paperScrollPaper {
-            display: flex;
-            max-height: calc(100% - 64px);
-            flex-direction: column;
-        }
-        .MuiDialog-paperScrollBody {
-            display: inline-block;
-            text-align: left;
-            vertical-align: middle;
-        }
-        .MuiDialog-paperWidthFalse {
-            max-width: calc(100% - 64px);
-        }
-        .MuiDialog-paperWidthXs {
-            max-width: 444px;
-        }
-        @media (max-width: 507.95px) {
-            .MuiDialog-paperWidthXs.MuiDialog-paperScrollBody {
-                max-width: calc(100% - 64px);
-            }
-        }
-        .MuiDialog-paperWidthSm {
-            max-width: 600px;
-        }
-        @media (max-width: 663.95px) {
-            .MuiDialog-paperWidthSm.MuiDialog-paperScrollBody {
-                max-width: calc(100% - 64px);
-            }
-        }
-        .MuiDialog-paperWidthMd {
-            max-width: 960px;
-        }
-        @media (max-width: 1023.95px) {
-            .MuiDialog-paperWidthMd.MuiDialog-paperScrollBody {
-                max-width: calc(100% - 64px);
-            }
-        }
-        .MuiDialog-paperWidthLg {
-            max-width: 1280px;
-        }
-        @media (max-width: 1343.95px) {
-            .MuiDialog-paperWidthLg.MuiDialog-paperScrollBody {
-                max-width: calc(100% - 64px);
-            }
-        }
-        .MuiDialog-paperWidthXl {
-            max-width: 1920px;
-        }
-        @media (max-width: 1983.95px) {
-            .MuiDialog-paperWidthXl.MuiDialog-paperScrollBody {
-                max-width: calc(100% - 64px);
-            }
-        }
-        .MuiDialog-paperFullWidth {
-            width: calc(100% - 64px);
-        }
-        .MuiDialog-paperFullScreen {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            max-width: 100%;
-            max-height: none;
-            border-radius: 0;
-        }
-        .MuiDialog-paperFullScreen.MuiDialog-paperScrollBody {
-            margin: 0;
-            max-width: 100%;
-        }
-    </style>
-</head>
-<body>
-    <div class="tab">
-        <nav class="tab-stripe">
-            <a class="active" href="#Tab1-Q1">1</a>
-            <!-- <a style="font-weight: bold" href="#addTabBtn">+</a> -->
-            <a href="#Tab1-Q2" class="">2</a><a href="#Tab1-Q3" class="">3</a
-            ><a href="#Tab1-Q4" class="">4</a>
-        </nav>
-        <button class="tab-scroll-button left hidden"></button>
-        <button class="tab-scroll-button right"></button>
-        <button class="tab-full-screen-button"></button>
-        <!-- <button class="floating-button"></button> -->
-        <div class="wrapper">
-            <link href="./floating.css" rel="stylesheet" />
-            <input type="checkbox" />
-            <div class="fab"></div>
-            <div class="fac">
-                <a id="pdf" href="#"><i class="fas fa-file-pdf"></i></a>
-            </div>
-        </div>
-        <div class="tab-content">
-            <div class="active" id="#Tab1-Q1">
-                <div id="text-input">
-                    <p></p>
-                    <p>Tiếp tục xem&nbsp;</p>
-                    <p>
-                        <iframe
-                            class="youtube-video"
-                            src="https://www.youtube.com/embed/tHEagaByETc"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen=""
-                        ></iframe>
-                    </p>
-                    thử xem nha
-                    <p></p>
-                    <p>xuống dòng</p>
-                    <div>
-                        <p></p>
-                        <p>
-                            <iframe
-                                class="youtube-video"
-                                src="https://www.youtube.com/embed/tHEagaByETc"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen=""
-                            ></iframe>
-                        </p>
-                        <br />
-                        <p></p>
-                        <p>
-                            <img
-                                src="https://i.imgur.com/6XoIX7Y.jpeg"
-                                style="max-width: 100%"
-                            /><br />
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="" id="#Tab1-Q2">
-                <div id="text-input">
-                    <p>
-                        <iframe
-                            class="youtube-video"
-                            src="https://www.youtube.com/embed/c0ov3k3NJDE"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen=""
-                        ></iframe>
-                    </p>
-                </div>
-            </div>
-            <div class="" id="#Tab1-Q3">
-                <div id="text-input">
-                    <img
-                        src="https://i.imgur.com/6XoIX7Y.jpeg"
-                        style="max-width: 100%"
-                    /><img
-                        src="https://i.imgur.com/6XoIX7Y.jpeg"
-                        style="max-width: 100%"
-                    />
-                    <div><br /></div>
-                    text nè, xong đến video<br />
-                    <div>
+@media print {
+  .MuiDialog-root {
+    position: absolute !important;
+  }
+}
+.MuiDialog-scrollPaper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.MuiDialog-scrollBody {
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+}
+.MuiDialog-scrollBody:after {
+  width: 0;
+  height: 100%;
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+}
+.MuiDialog-container {
+  height: 100%;
+  outline: 0;
+}
+@media print {
+  .MuiDialog-container {
+    height: auto;
+  }
+}
+.MuiDialog-paper {
+  margin: 32px;
+  position: relative;
+  overflow-y: auto;
+}
+@media print {
+  .MuiDialog-paper {
+    box-shadow: none;
+    overflow-y: visible;
+  }
+}
+.MuiDialog-paperScrollPaper {
+  display: flex;
+  max-height: calc(100% - 64px);
+  flex-direction: column;
+}
+.MuiDialog-paperScrollBody {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+.MuiDialog-paperWidthFalse {
+  max-width: calc(100% - 64px);
+}
+.MuiDialog-paperWidthXs {
+  max-width: 444px;
+}
+@media (max-width:507.95px) {
+  .MuiDialog-paperWidthXs.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+.MuiDialog-paperWidthSm {
+  max-width: 600px;
+}
+@media (max-width:663.95px) {
+  .MuiDialog-paperWidthSm.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+.MuiDialog-paperWidthMd {
+  max-width: 960px;
+}
+@media (max-width:1023.95px) {
+  .MuiDialog-paperWidthMd.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+.MuiDialog-paperWidthLg {
+  max-width: 1280px;
+}
+@media (max-width:1343.95px) {
+  .MuiDialog-paperWidthLg.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+.MuiDialog-paperWidthXl {
+  max-width: 1920px;
+}
+@media (max-width:1983.95px) {
+  .MuiDialog-paperWidthXl.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+.MuiDialog-paperFullWidth {
+  width: calc(100% - 64px);
+}
+.MuiDialog-paperFullScreen {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  max-width: 100%;
+  max-height: none;
+  border-radius: 0;
+}
+.MuiDialog-paperFullScreen.MuiDialog-paperScrollBody {
+  margin: 0;
+  max-width: 100%;
+}
+</style></head>
+    <body>
+        
+        <div class="tab">
+            <nav class="tab-stripe">
+                <a class="active" href="#Tab1-Q1">1</a>
+                <!-- <a style="font-weight: bold" href="#addTabBtn">+</a> -->
+                <a href="#Tab1-Q2" class="">2</a><a href="#Tab1-Q3" class="">3</a><a href="#Tab1-Q4" class="">4</a><a href="#Tab1-Q5" class="">5</a><a href="#Tab1-Q6" class="">6</a><a href="#Tab1-Q7" class="">7</a><a href="#Tab1-Q8" class="">8</a><a href="#Tab1-Q9" class="">9</a><a href="#Tab1-Q10" class="">10</a><a href="#Tab1-Q11">11</a><a href="#Tab1-Q12" class="">12</a><a href="#Tab1-Q13" class="">13</a><a href="#Tab1-Q14" class="">14</a>
+            </nav>
+            <button class="tab-scroll-button left hidden"></button>
+            <button class="tab-scroll-button right"></button>
+            <button class="tab-full-screen-button"></button>
+            <div class="tab-content">
+                <div class="active" id="#Tab1-Q1">
+                    <div id="text-input">
+                        <div style="text-align: left">
+                            <font size="7" face="cursive"><b style=""><i style=""><font style="background-color: rgb(197, 255, 71);" color="#fb6a6a">hello</font></i></b></font></div>
+                        <div style="text-align: left">
+                            <b style=""><i style=""><font face="Verdana" style="
+                                            background-color: rgb(197, 255, 71);
+                                        " size="3" color="#fb6a6a"><img src="https://i.imgur.com/aFlzSlb.jpeg" style="max-width: 100%;"><br></font></i></b>
+                        </div>
                         <div>
-                            <p>
-                                <iframe
-                                    class="youtube-video"
-                                    src="https://www.youtube.com/embed/tHEagaByETc"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen=""
-                                ></iframe>
-                            </p>
-                            <br /><br />
+                            <div style="text-align: left">
+                                <b style=""><i style=""><font face="Verdana" style="
+                                                background-color: rgb(
+                                                    197,
+                                                    255,
+                                                    71
+                                                );
+                                            " size="3" color="#fb6a6a"><br></font></i></b>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="" id="#Tab1-Q4">
-                <div id="text-input">
-                    <p style="margin-bottom: 1em; color: rgb(17, 17, 17)">
-                        <font face="Times New Roman" style="" size="4"
-                            >❤ Tổng hợp lại các kiến thức, bài tập cần thiết
-                            dành cho người muốn học đệm hát (có cơ bản) từ số 0
-                            mà Ad đã làm</font
-                        >
-                    </p>
-                    <font face="Times New Roman" size="4"
-                        ><p
-                            style="
-                                margin-top: 0px;
-                                margin-bottom: 1em;
-                                color: rgb(17, 17, 17);
-                            "
-                        >
-                            (Nếu bạn thích học theo cách mỳ ăn liền xin bỏ qua
-                            bài viết này)
-                        </p>
-                        <p
-                            style="
-                                margin-top: 0px;
-                                margin-bottom: 1em;
-                                color: rgb(17, 17, 17);
-                            "
-                        >
-                            10 phần bài tập Ad đã làm còn thiếu một số nội dung
-                            thực hành nên chỉ coi như kiến thức + bài tập bổ trợ
-                            để khi bạn học vào bài cụ thể nhanh hơn và sau này
-                            muốn chơi lên nâng cao sẽ thuận lợi. Nếu ngay từ đầu
-                            bạn xem hướng dẫn và tập thẳng vào bài bạn thích
-                            ngay mà k biết một số bài tập + kiến thức cơ bản thì
-                            bạn sẽ dễ rơi vào tình trạng dậm chân tại chỗ.
-                        </p>
-                        <p
-                            style="
-                                margin-top: 0px;
-                                margin-bottom: 1em;
-                                color: rgb(17, 17, 17);
-                            "
-                        >
-                            Lưu ý: Do có một thời gian dài bị vướng việc riêng
-                            nên Ad vẫn còn thiếu một số phần cần thiết như bảng
-                            sơ đồ các điệu phổ biến + clip hướng dẫn quạt các
-                            điệu, cách ghép hát để k bị lệch nhịp, cách bắt
-                            tông, hướng dẫn sử dụng capo… các bạn cần phần nào
-                            cứ cmt có thời gian Ad sẽ làm thêm
-                        </p>
-                        <p
-                            style="
-                                margin-top: 0px;
-                                margin-bottom: 1em;
-                                color: rgb(17, 17, 17);
-                            "
-                        >
-                            Một số bài học Ad có làm video kèm theo nên việc bạn
-                            chỉ down ảnh/pdf về tập sẽ ít hiệu quả hơn
-                        </p></font
-                    >
+                <div class="" id="#Tab1-Q2">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q3">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q4">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q5">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q6">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q7">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q8">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q9">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q10">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q11">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q12">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q13">
+                    <div id="text-input"></div>
+                </div>
+                <div class="" id="#Tab1-Q14">
+                    <div id="text-input"></div>
                 </div>
             </div>
+        <div class="wrapper">
+        <link href="./floating.css" rel="stylesheet">
+        <input type="checkbox">
+        <div class="fab"></div>
+        <div class="fac">
+            <a id="pdf" href="#"><i class="fas fa-file-pdf"></i></a>
         </div>
-    </div>
+    </div></div>
+        
 
-    <!-- script for floating menu -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        
 
-    <!-- script for text editor -->
-    <script src="./text-editor/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <!-- script for vanilla tab -->
-    <script src="./vanilla-tab/script.js"></script>
+        <!-- script for text editor -->
+        <script src="./text-editor/script.js"></script>
+        <!-- script for vanilla tab -->
+        <script src="./vanilla-tab/script.js"></script>
 
-    <script src="./floating.js"></script>
+        <div id="5386CA82-7210-0F03-F0B8-355E1D75DEB4"></div>
 
-    <div id="DEC45FF6-6DC7-F4DC-C180-164C70A113E7"></div>
-    <div id="57E59D99-35AF-2CB5-60A8-73B62E84B4DC"></div>
-    <div></div>
-    <div></div>
-    <div></div>
-</body>
-<!-- script for rich text edior -->
+        <div id="7AED1372-33EB-4BE0-41A5-C4BAC04DA6C6"></div>
+
+        <div id="B474ABDC-1C4A-A599-A5FA-416E31C6C6EB"></div>
+
+        <div id="39A9C575-D3CD-015B-5FBF-EA06C0341D48"></div>
+    
+    
+
+<div id="3F33D0BE-7BC7-8C36-64E2-CE811CDD5C33"></div>
+<div id="DE4C0925-BF73-BE95-B09F-587F844B389D"></div>
+<div id="EB29B2C5-B3A6-BEAF-6993-462EFC18DFF9"></div>
+<div id="37AE1A32-0A92-3C39-5721-6091EEF8ED1D"></div><script src="./floating.js"></script></body><!-- script for rich text edior --></html>
