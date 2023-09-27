@@ -26,20 +26,6 @@ const intializer = () => {
     highlighter(formatButtons, false);
     highlighter(scriptButtons, true);
 
-    // fontList.map((value) => {
-    //     let option = document.createElement("option");
-    //     option.value = value;
-    //     option.innerHTML = value;
-    //     fontName.appendChild(option);
-    // });
-
-    // for (let i = 1; i <= 7; i++) {
-    //     let option = document.createElement("option");
-    //     option.value = i;
-    //     option.innerHTML = i;
-    //     fontSizeRef.appendChild(option);
-    // }
-
     fontSizeRef.value = 3;
 };
 
@@ -110,13 +96,6 @@ const insertElement = (elem) => {
     selection.addRange(range);
 };
 
-const createImage = (src) => {
-    // console.log(src);
-    var image = document.createElement("img");
-    image.src = src;
-    insertElement(image);
-};
-
 linkButton.addEventListener("click", () => {
     let userLink = prompt("Enter a URL");
 
@@ -144,7 +123,7 @@ linkButton.addEventListener("click", () => {
             // document.execCommand("insertImage", false, userLink);
             var image = document.createElement("img");
             image.src = userLink;
-            image.style.maxWidth = "100%";
+            image.style.width = "100%";
             insertElement(image);
         } else modifyText("createLink", false, userLink);
     } else {
@@ -153,7 +132,7 @@ linkButton.addEventListener("click", () => {
             // document.execCommand("insertImage", false, userLink);
             var image = document.createElement("img");
             image.src = userLink;
-            image.style.maxWidth = "100%";
+            image.style.width = "100%";
             insertElement(image);
         }
     }

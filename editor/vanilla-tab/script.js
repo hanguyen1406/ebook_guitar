@@ -304,11 +304,14 @@ const publishForUser = () => {
 
     // Create a new script element
     const scriptElement = document.createElement("script");
+    const scriptElement2 = document.createElement("script");
 
     // Set the src attribute to "./floating.js"
     scriptElement.src = "./floating.js";
+    scriptElement2.src = "./pdf-lib.min.js";
 
     // Append the script element to the <body>
+    doc.body.appendChild(scriptElement2);
     doc.body.appendChild(scriptElement);
 
     // var data = doc.querySelector("html").innerHTML;
@@ -329,6 +332,7 @@ const publishForUser = () => {
         .catch((error) => {
             console.error("Error:", error);
         });
+    saveVanillaTab();
 };
 
 const exportTab = () => {
