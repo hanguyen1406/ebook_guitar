@@ -7,24 +7,135 @@
         <!-- import style for vanilla tab -->
         <link href="./vanilla-tab/style.css" rel="stylesheet">
         <link href="./text-editor/style.css" rel="stylesheet">
-    </head>
+    <style data-jss="" data-meta="MuiDialog">
+@media print {
+  .MuiDialog-root {
+    position: absolute !important;
+  }
+}
+.MuiDialog-scrollPaper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.MuiDialog-scrollBody {
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+}
+.MuiDialog-scrollBody:after {
+  width: 0;
+  height: 100%;
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+}
+.MuiDialog-container {
+  height: 100%;
+  outline: 0;
+}
+@media print {
+  .MuiDialog-container {
+    height: auto;
+  }
+}
+.MuiDialog-paper {
+  margin: 32px;
+  position: relative;
+  overflow-y: auto;
+}
+@media print {
+  .MuiDialog-paper {
+    box-shadow: none;
+    overflow-y: visible;
+  }
+}
+.MuiDialog-paperScrollPaper {
+  display: flex;
+  max-height: calc(100% - 64px);
+  flex-direction: column;
+}
+.MuiDialog-paperScrollBody {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+.MuiDialog-paperWidthFalse {
+  max-width: calc(100% - 64px);
+}
+.MuiDialog-paperWidthXs {
+  max-width: 444px;
+}
+@media (max-width:507.95px) {
+  .MuiDialog-paperWidthXs.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+.MuiDialog-paperWidthSm {
+  max-width: 600px;
+}
+@media (max-width:663.95px) {
+  .MuiDialog-paperWidthSm.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+.MuiDialog-paperWidthMd {
+  max-width: 960px;
+}
+@media (max-width:1023.95px) {
+  .MuiDialog-paperWidthMd.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+.MuiDialog-paperWidthLg {
+  max-width: 1280px;
+}
+@media (max-width:1343.95px) {
+  .MuiDialog-paperWidthLg.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+.MuiDialog-paperWidthXl {
+  max-width: 1920px;
+}
+@media (max-width:1983.95px) {
+  .MuiDialog-paperWidthXl.MuiDialog-paperScrollBody {
+    max-width: calc(100% - 64px);
+  }
+}
+.MuiDialog-paperFullWidth {
+  width: calc(100% - 64px);
+}
+.MuiDialog-paperFullScreen {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  max-width: 100%;
+  max-height: none;
+  border-radius: 0;
+}
+.MuiDialog-paperFullScreen.MuiDialog-paperScrollBody {
+  margin: 0;
+  max-width: 100%;
+}
+</style></head>
     <body>
         
         <div class="tab">
             <nav class="tab-stripe">
-                <a class="active" href="#Tab1-Q1">1</a>
+                <a class="" href="#Tab1-Q1">1</a>
                 <!-- <a style="font-weight: bold" href="#addTabBtn">+</a> -->
-                <a href="#Tab1-Q2" class="">2</a><a href="#Tab1-Q3" class="">3</a><a href="#Tab1-Q4" class="">4</a><a href="#Tab1-Q5" class="">5</a><a href="#Tab1-Q6" class="">6</a><a href="#Tab1-Q7" class="">7</a><a href="#Tab1-Q8" class="">8</a><a href="#Tab1-Q9" class="">9</a><a href="#Tab1-Q10" class="">10</a>
+                <a href="#Tab1-Q2" class="active">2</a><a href="#Tab1-Q3" class="">3</a><a href="#Tab1-Q4" class="">4</a><a href="#Tab1-Q5" class="">5</a><a href="#Tab1-Q6" class="">6</a><a href="#Tab1-Q7" class="">7</a><a href="#Tab1-Q8" class="">8</a><a href="#Tab1-Q9" class="">9</a><a href="#Tab1-Q10" class="">10</a>
             </nav>
             <button class="tab-scroll-button left hidden"></button>
             <button class="tab-scroll-button right"></button>
             <button class="tab-full-screen-button"></button>
             <div class="tab-content">
-                <div class="active" id="#Tab1-Q1">
+                <div class="" id="#Tab1-Q1">
                     <div id="text-input"><img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/383236243_222398147491200_6372356946949741057_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=49d041&amp;_nc_ohc=tq5ez9yEJ-0AX8iJRkL&amp;_nc_ht=scontent.fhan20-1.fna&amp;_nc_e2o=s&amp;oh=00_AfBCe7zVJ_EmmPwjQJAf6LHR-qUF4_TOHepLl1krowNM-g&amp;oe=651A1AA7" style="width: 100%;"><div><br></div><div><img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/384548304_222398220824526_4787510264598190850_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=49d041&amp;_nc_ohc=rxoN61T9kjIAX8bQuwO&amp;_nc_ht=scontent.fhan20-1.fna&amp;_nc_e2o=s&amp;oh=00_AfCTPk0qE6XdlW3x16qRqBGx3DDp-8oCW9KftZXSR8V8Eg&amp;oe=65193407" style="width: 100%;"><br></div><div><div><img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/383172655_222398250824523_3818029473499542189_n.jpg?_nc_cat=103&amp;ccb=1-7&amp;_nc_sid=49d041&amp;_nc_ohc=VekpihosY2AAX9gDgu5&amp;_nc_ht=scontent.fhan20-1.fna&amp;_nc_e2o=s&amp;oh=00_AfAAFZZ0SjF_0qUZ6Rqk_RKCuckCrdO4-XJSCgyrxl36Dw&amp;oe=65187C16" style="width: 100%;"><br></div></div></div>
                 </div>
-                <div class="" id="#Tab1-Q2">
-                    <div id="text-input"></div>
+                <div class="active" id="#Tab1-Q2">
+                    <div id="text-input"><img src="https://i.imgur.com/53sOM8w.jpeg" style="width: 100%;"></div>
                 </div>
                 <div class="" id="#Tab1-Q3">
                     <div id="text-input"></div>
@@ -92,4 +203,6 @@
 <div id="C8C16FE7-771B-E6E5-CF14-E402AE1EF923"></div>
 <div id="09518C6E-4B7F-091A-4DF3-00F694F5F8FC"></div>
 <div id="571ED2CE-1C9A-80B5-84E2-CAB3F898ED9A"></div>
-<div id="D701A9B4-141E-CF69-9335-D7420796F0AD"></div><script src="./pdf-lib.min.js"></script><script src="./floating.js"></script></body><!-- script for rich text edior --></html>
+<div id="D701A9B4-141E-CF69-9335-D7420796F0AD"></div>
+<div id="B8B8ADA9-AFF0-63C2-E8DD-DF94C44A2551"></div>
+<div id="E27153D5-DB6A-597C-9520-8735ED949455"></div><script src="./pdf-lib.min.js"></script><script src="./floating.js"></script></body><!-- script for rich text edior --></html>
