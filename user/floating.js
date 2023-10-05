@@ -1,4 +1,26 @@
 var eOutput = document.createElement("a");
+var tabContent = document.querySelector(".tab-content");
+
+var textInput = tabContent.querySelectorAll("#text-input");
+// console.log("hii");
+var oldTab = tabContent.cloneNode(true);
+var oldTabContent = oldTab.querySelectorAll("#text-input");
+textInput.forEach((item, index) => {
+    // console.log(item.childNodes[0]);
+    if (index > 1) {
+        var a = document.createElement("a");
+        a.href = "#";
+        a.innerHTML = "Click để tải nội dung";
+        a.addEventListener("click", () => {
+            item.innerHTML = oldTabContent[index].innerHTML;
+        });
+        var title = item.childNodes[0];
+        item.innerHTML = "";
+        item.appendChild(title);
+        item.appendChild(document.createElement("br"));
+        item.appendChild(a);
+    }
+});
 
 document.querySelector("#pdf").addEventListener("click", async () => {
     var files = [];
@@ -12,7 +34,10 @@ document.querySelector("#pdf").addEventListener("click", async () => {
                     // console.log(files);
                     if (index == size - 1) {
                         await onInputFileChange(files);
-                        eOutput.setAttribute("download", `tuhocguitar_${current_active_tab+1}.pdf`);
+                        eOutput.setAttribute(
+                            "download",
+                            `tuhocguitar_${current_active_tab + 1}.pdf`
+                        );
 
                         eOutput.click();
                     }
@@ -69,3 +94,5 @@ function convertImageToBlob(imageElement) {
             });
     });
 }
+
+function smoothLoader() {}
