@@ -2,23 +2,28 @@ var eOutput = document.createElement("a");
 var tabContent = document.querySelector(".tab-content");
 
 var textInput = tabContent.querySelectorAll("#text-input");
-// console.log("hii");
 var oldTab = tabContent.cloneNode(true);
 var oldTabContent = oldTab.querySelectorAll("#text-input");
 textInput.forEach((item, index) => {
-    // console.log(item.childNodes[0]);
-    if (index > 1) {
-        var a = document.createElement("a");
-        a.href = "#";
-        a.innerHTML = "Click để tải nội dung";
+    var a = item.querySelector("#tittle");
+    if (a) {
         a.addEventListener("click", () => {
-            item.innerHTML = oldTabContent[index].innerHTML;
+            fetch('loader.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ index: index })
+            })
+            .then(response => response.text())
+            .then(data => {
+                
+                alert(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
-        var title = item.childNodes[0];
-        item.innerHTML = "";
-        item.appendChild(title);
-        item.appendChild(document.createElement("br"));
-        item.appendChild(a);
     }
 });
 

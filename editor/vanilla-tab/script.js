@@ -281,13 +281,27 @@ const saveVanillaTab = () => {
 };
 
 const publishForUser = () => {
-    var doc = document.cloneNode(true);
+    var doc = document.cloneNode(true),
+        textInput = [];
     //remove .container, atribute conteneditable, .context-menu, #excute
+
     doc.querySelector(".container").remove();
     doc.querySelector(".context-menu").remove();
     doc.querySelector("#excute").remove();
-    doc.querySelectorAll("#text-input").forEach((value) => {
+    doc.querySelectorAll("#text-input").forEach((value, index) => {
         value.removeAttribute("contenteditable");
+        textInput.push(value.innerHTML);
+        if (index > 1) {
+            var title = value.querySelector("b");
+            if (title) {
+                value.innerHTML = title.outerHTML + "<br>";
+                var loader = document.createElement("a");
+                loader.href = '#';
+                loader.id = "tittle";
+                loader.innerHTML = "<b>Click để tải nội dung.</b>";
+                value.appendChild(loader);
+            }
+        }
     });
 
     //prepare for floating icon
@@ -319,9 +333,12 @@ const publishForUser = () => {
 
     fetch("publishUser.php", {
         method: "POST",
-        body: data,
+        body: JSON.stringify({
+            data: data,
+            textInput: textInput,
+        }),
         headers: {
-            "Content-Type": "text/plain",
+            "Content-Type": "application/json",
         },
     })
         .then((response) => response.text())
