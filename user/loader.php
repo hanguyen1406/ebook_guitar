@@ -1,9 +1,12 @@
 <?php
 $data = json_decode(file_get_contents("php://input"));
+$jsonData = file_get_contents('text-input.json');
+
+$textInput = json_decode($jsonData, true);
 
 if ($data) {
-    $index = $data->index;
-    echo 'hello: '.$index;
+    $index = intval($data->index);
+    echo $textInput[$index];
     
 }
 ?>

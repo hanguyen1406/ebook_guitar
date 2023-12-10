@@ -259,7 +259,9 @@ const saveVanillaTab = () => {
     styleElements.forEach((styleElement) => {
         styleElement.parentNode.removeChild(styleElement);
     });
-
+    document.querySelectorAll(".tab-content img").forEach((img) => {
+        img.style.width = "100%";
+    });
     var data = document.documentElement.outerHTML;
     // console.log(data);
     // Create a POST request to the server
@@ -296,7 +298,7 @@ const publishForUser = () => {
             if (title) {
                 value.innerHTML = title.outerHTML + "<br>";
                 var loader = document.createElement("a");
-                loader.href = '#';
+                loader.href = "#";
                 loader.id = "tittle";
                 loader.innerHTML = "<b>Click để tải nội dung.</b>";
                 value.appendChild(loader);

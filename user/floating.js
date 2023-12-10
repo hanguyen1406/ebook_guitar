@@ -8,21 +8,21 @@ textInput.forEach((item, index) => {
     var a = item.querySelector("#tittle");
     if (a) {
         a.addEventListener("click", () => {
-            fetch('loader.php', {
-                method: 'POST',
+            fetch("loader.php", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ index: index })
+                body: JSON.stringify({ index: index }),
             })
-            .then(response => response.text())
-            .then(data => {
-                
-                alert(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                .then((response) => response.text())
+                .then((data) => {
+                    // alert(data);
+                    textInput[index].innerHTML = data;
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
         });
     }
 });
